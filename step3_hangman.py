@@ -13,16 +13,25 @@ print(placeholder)
 # TODO-1: - Use a while loop to let the user guess again.
 
 
-display = ""
+
+correct_letters = []
 game_over = False
 while not game_over:
     guess = input("Guess a letter: ").lower()
+    display = ""
     for letter in chosen_word:
         if letter == guess:
+            display += letter
+            correct_letters.append(guess)
+        elif letter in correct_letters:
             display += letter
         else:
             display += "_"
     print(display)
+
+    if "_" not in display:
+        game_over = True
+        print("You win!")
 # TODO-2: Change the for loop so that you keep the previous correct letters in display.
 
 
